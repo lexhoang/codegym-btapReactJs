@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            margin: 50px 300px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .col-addNew {
+            width: 300px;
+        }
+
+        .col-addNew input {
+            width: 100%;
+            height: 28px;
+            margin: 10px;
+            border-radius: 4px;
+        }
+
+        .btn-add {
+            width: 50%;
+            height: 32px;
+            border: none;
+            border-radius: 4px;
+            background-color: rgb(23, 122, 33);
+            color: #fff;
+            cursor: pointer;
+            transition: calc(0.5s);
+        }
+
+        .btn-add:hover {
+            background-color: rgb(11, 153, 25);
+        }
+    </style>
+</head>
+
+<body>
+    <div style="margin: 60px auto; text-align: center">
+        <label for="">Tìm kiếm</label>
+        <input type="text" oninput="searchNameAnimal()" id="name-animal" style="width: 25%; height:32px;">
+    </div>
+    <div class=" container">
+        <div class="col-addNew">
+            <div>
+                <label for="">Mã khoa học</label>
+                <input type="text" id="inp-add_IdAnimal">
+            </div>
+
+            <div>
+                <label for="">Tên khoa học</label>
+                <input type="text" id="inp-add_NameAnimal">
+            </div>
+
+            <div>
+                <label for="">Thuộc loại</label>
+                <input type="text" id="inp-add_TypeAnimal">
+            </div>
+            <div style="text-align:center">
+                <button class="btn-add" onclick="addAnimal()">Thêm mới</button>
+            </div>
+        </div>
+        <div>
+            <table border="1" cellspacing="0" cellpadding="20">
+                <thead>
+                    <tr>
+                        <th>Mã Khoa Học</th>
+                        <th>Tên Khoa Học</th>
+                        <th>Thuộc Loại</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+
+</html>
