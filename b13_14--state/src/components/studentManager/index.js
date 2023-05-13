@@ -5,7 +5,7 @@ export default class StudentManager extends Component {
         super(props);
         this.state = {
             studentList: [],
-            form: { name: "", phone: "", email: "" },
+            form: { id: "", name: "", phone: "", email: "" },
             isValid: false,
             indexSelected: -1,
         };
@@ -28,11 +28,11 @@ export default class StudentManager extends Component {
 
     handleSubmit = () => {
         if (this.state.isValid) {
-            const newList = [...this.state.studentList]
-            // if (this.state.indexSelected > -1) {
-            // } else {
-            newList.push(this.state.form)
-            // }
+            const newList = this.state.studentList
+            if (this.state.indexSelected > -1) {
+            } else {
+                newList.unshift({ ...this.state.form, id: Math.floor(Math.random() * 1000) })
+            }
             this.setState({
                 studentList: newList
             })
@@ -40,7 +40,11 @@ export default class StudentManager extends Component {
         }
     }
 
-    handleDelete = (index) => {
+    handleDelete = (ID) => {
+        const deleteItem = this.state.studentList.filter(student => student.id !== ID)
+        this.setState({
+            studentList: deleteItem
+        })
     }
 
     checkInvalidForm = () => {
@@ -74,6 +78,7 @@ export default class StudentManager extends Component {
                         <thead>
                             <tr>
                                 {/* Tạo Table header Name, Phone, Email, Action */}
+                                <th>ID</th>
                                 <th>Name</th>
                                 <th>Phone</th>
                                 <th>Email</th>
@@ -86,13 +91,20 @@ export default class StudentManager extends Component {
                         Tạo button Delete với onClick gọi tới hàm handleDelete
                     */ }
                             {
-                                studentList.map((student, index) => {
+                                studentList.map((student, index) => (
                                     <tr key={index}>
+                                        <td> {student.id} </td>
                                         <td> {student.name} </td>
                                         <td> {student.phone} </td>
                                         <td> {student.email} </td>
+                                        <td>
+                                            <div className='btn-group'>
+                                                <button className='btn btn-info'>Edit</button>
+                                                <button className='btn btn-danger' onClick={() => this.handleDelete(student.id)}>Delete</button>
+                                            </div>
+                                        </td>
                                     </tr>
-                                })
+                                ))
                             }
                         </tbody>
                     </table>

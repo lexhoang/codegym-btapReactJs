@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import '../styles/header.css'
 
 const styleNavLink = ({ isActive }) => ({
@@ -18,6 +18,7 @@ export default function Header() {
             <NavLink style={styleNavLink} to='/bai2' >Bài 2</NavLink>
             <NavLink style={styleNavLink} to='/bai3' >Bài 3</NavLink>
             <NavLink style={styleNavLink} to='/bai4' >Bài 4</NavLink>
+            <NavLink style={styleNavLink} to='/bai5' >Bài 5</NavLink>
         </div>
     )
 }
