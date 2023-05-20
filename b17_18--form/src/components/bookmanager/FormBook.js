@@ -8,7 +8,7 @@ export default function FormBook(props) {
 
     const validationSchema = Yup.object().shape({
         title: Yup.string().required('Title is required'),
-        number: Yup.string().required('Author is required'),
+        number: Yup.string().required('Number is required'),
     });
     const initialValues = {
         title: "",
@@ -26,13 +26,13 @@ export default function FormBook(props) {
                 <div className="form-group my-3">
                     <label htmlFor="title">Tiêu đề</label>
                     <Field type="text" id="title" name="title" className="form-control" />
-                    <ErrorMessage style={{ color: 'red' }} name="title" />
+                    <ErrorMessage component="p" style={{ color: 'red' }} name="title" />
                 </div>
 
                 <div className="form-group my-3">
                     <label htmlFor="number">Số lượng</label>
                     <Field type="text" id="number" name="number" className="form-control" />
-                    <ErrorMessage style={{ color: 'red' }} name="number" />
+                    <ErrorMessage component="p" style={{ color: 'red' }} name="number" />
                 </div>
 
                 <button className="btn btn-primary" type="submit">
