@@ -3,11 +3,10 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Route, Routes } from 'react-router-dom';
-import LayoutComp from './components/LayoutComp';
-import Login from './components/router-1_2/Login';
-import Home from './components/router-1_2/Home';
-import Employees from './components/router-1_2/Employees';
-import EmployeesDetail from './components/router-1_2/EmployeesDetail';
+import Login from './components/content/Login';
+import Home from './components/content/Home';
+import Employees from './components/content/Employees';
+import EmployeesDetail from './components/content/EmployeesDetail';
 
 const employees = [
   {
@@ -30,12 +29,10 @@ const employees = [
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<LayoutComp />} >
-        <Route index element={<Login />} />
-        <Route path='home' element={<Home />} />
-        <Route path='employees' element={<Employees employees={employees} />} />
-        <Route path='employees/:employeesId' element={<EmployeesDetail employees={employees} />} />
-      </Route>
+      <Route path='/' element={<Login />} />
+      <Route path='/home' element={<Home />} />
+      <Route path='/employees' element={<Employees employees={employees} />} />
+      <Route path='/employees/:employeesId' element={<EmployeesDetail employees={employees} />} />
     </Routes>
   );
 }

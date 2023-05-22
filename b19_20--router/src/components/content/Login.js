@@ -30,7 +30,7 @@ export default function Login() {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <div className="col-5 m-5">
+                <div className="col-4 m-5 mx-auto">
                     <div className="mb-3">
                         <label htmlFor className="form-label">Account</label>
                         <input type="text" className="form-control" placeholder='Nhập tài khoản'

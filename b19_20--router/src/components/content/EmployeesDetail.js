@@ -6,7 +6,7 @@ export default function EmployeesDetail(props) {
     const { employeesId } = useParams();
 
     return (
-        <div className="col-3 m-5">
+        <div className="col-3 m-5 mx-auto">
             <h1 className="my-4">Employees Details</h1>
             {
                 employees.filter(employee => employee.id == employeesId)
