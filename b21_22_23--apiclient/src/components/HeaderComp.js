@@ -22,7 +22,7 @@ export default function HeaderComp() {
         <>
             <div style={styleHeader}>
                 <NavLink style={styleNavLink} to='/' >Bài 1</NavLink>
-                <NavLink style={styleNavLink} to='/bai2' >Bài 2</NavLink>
+                <NavLink style={styleNavLink} to='/bookManager' >Bài 2</NavLink>
                 <NavLink style={styleNavLink} to='/bai3' >Bài 3</NavLink>
                 <NavLink style={styleNavLink} to='/bai4' >Bài 4</NavLink>
             </div>
