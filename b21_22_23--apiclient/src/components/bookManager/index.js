@@ -9,8 +9,6 @@ export default function BookManager() {
     const [listBook, setListBook] = useState([]);
     const [loadFormById, setLoadFormById] = useState(null);
 
-    const navigate = useNavigate();
-
     const btnEditBook = (bookEdit) => {
         setLoadFormById(bookEdit);
         console.log(bookEdit);
@@ -31,9 +29,9 @@ export default function BookManager() {
     return (
         <div>
             <Routes>
-                <Route path="/" element={<TableBook listBook={listBook} btnEditBook={btnEditBook} />} />
-                <Route path="/formBook" element={<FormBook />} />
-                <Route path="/formBook/:bookId" element={<FormBook loadFormById={loadFormById} />} />
+                <Route path="/" element={<TableBook listBook={listBook} btnEditBook={btnEditBook} setListBook={setListBook} />} />
+                <Route path="/formBook" element={<FormBook listBook={listBook} setListBook={setListBook} />} />
+                <Route path="/formBook/:bookId" element={<FormBook loadFormById={loadFormById} listBook={listBook} setListBook={setListBook} />} />
             </Routes>
         </div>
     );

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 export default function TableBook(props) {
-    const { listBook, btnEditBook } = props;
+    const { listBook, setListBook, btnEditBook } = props;
     const navigate = useNavigate();
 
     const handleEdit = (book) => {
@@ -15,13 +15,16 @@ export default function TableBook(props) {
     const handleDelete = (IdBook) => {
         axios.delete(`https://my-json-server.typicode.com/codegym-vn/mock-api-books/books/${IdBook}`)
             .then((response) => {
-                console.log('oke');
+                console.log('delete oke');
+                const newBook = listBook.filter(book => book.id !== IdBook);
+                alert('Status: ' + response.status + " Xóa thành công!!!")
+                setListBook(newBook);
             }).catch((error) => {
                 console.log(error);
             })
     }
 
-   
+
     return (
         <>
             <h2>Library</h2>

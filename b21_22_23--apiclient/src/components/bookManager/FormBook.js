@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup'
 
 
@@ -9,16 +10,23 @@ const validationSchema = Yup.object().shape({
     quantity: Yup.string().required('Vui lòng nhập quantity')
 })
 export default function FormBook(props) {
-    const { loadFormById } = props;
-
+    const { listBook, setListBook, loadFormById } = props;
     const [form, setForm] = useState({ title: '', quantity: '' });
+
+    const navigate = useNavigate()
+
 
     const handleSubmit = (values, { resetForm }) => {
         if (loadFormById) {
-            axios.put(`https://my-json-server.typicode.com/codegym-vn/mock-api-books/books/${loadFormById.id}`, loadFormById)
+            axios.put(`https://my-json-server.typicode.com/codegym-vn/mock-api-books/books/${values.id}`, values)
                 .then((response) => {
+                    console.log(values.id);
                     console.log(response.data);
+                    const index = listBook.findIndex(item => item.id === values.id);
+                    const updateBook = [...listBook];
+                    updateBook[index] = response.data;
                     alert('Status: ' + response.status + ' Sửa thành công');
+                    navigate('/bookManager')
                 })
                 .catch((error) => {
                     console.log(error);
@@ -27,7 +35,11 @@ export default function FormBook(props) {
             axios.post('https://my-json-server.typicode.com/codegym-vn/mock-api-books/books', values)
                 .then((response) => {
                     console.log(response.data);
-                    alert('Status: ' + response.status + ' Thêm mới thành công')
+                    const bookNew = [...listBook];
+                    bookNew.push(response.data);
+                    setListBook(bookNew);
+                    alert('Status: ' + response.status + ' Thêm mới thành công');
+                    navigate('/bookManager')
                 })
                 .catch((error) => {
                     console.log(error);
